@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Title -->
+<title>
+	Command Center Login
+</title>
+
+<!-- Header -->
+<head>
+	<div class="header">
+		<embed src="C:\Users\jeroe\Desktop\Coding\Images\ON-Logo.png" alt="OPENetworks Logo" width="220" height="130" ></embed>
+	</div>
+	<hr>
+</head> 
+
+
+<!-- Body -->
+<body>
+
+<?php
+// Remove special characters from input to prevent injection attacks
+// define variables and set to empty values
+$username = $password = $remember = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = test_input($_POST["username"]);
+  $password = test_input($_POST["password"]);
+  $remember = test_input($_POST["remember"]);
+
+}//end request method init
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}//end test_input
+
+?>
+
+	<form method="post" action="Welcome.html">
+		Username:  <input type="text" name="username" />
+		<br>
+		Password: <input type="password" name="password" />
+		<br>
+		Remember me: <input type="checkbox" name="remember" value="true">
+		<input type="submit" name="submit" value="Submit" />
+	</form>
+
+</body>
+
+
+</html>
